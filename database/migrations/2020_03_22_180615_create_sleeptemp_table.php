@@ -15,6 +15,7 @@ class CreateSleeptempTable extends Migration
     {
         Schema::create('sleeptemp', function (Blueprint $table) {
             $table->id();
+            $table->string('sleep_temp')->unique();
             $table->timestamps();
         });
     }

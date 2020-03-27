@@ -15,6 +15,7 @@ class CreateCooktimesTable extends Migration
     {
         Schema::create('cooktimes', function (Blueprint $table) {
             $table->id();
+            $table->string('cooktime_name')->unique();
             $table->timestamps();
         });
     }

@@ -15,6 +15,12 @@ class CreateBillsTable extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
+            $table->date('bill_date');
+            $table->time('bill_time');
+            $table->double('bill_value');
+            $table->string('bill_img')->unique();
+            $table->bigInteger('fk_user')->unsigned()->index();
+            $table->bigInteger('fk_billtype')->unsigned()->index();
             $table->timestamps();
         });
     }

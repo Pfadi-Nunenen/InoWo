@@ -15,6 +15,10 @@ class CreateAdmTable extends Migration
     {
         Schema::create('adm', function (Blueprint $table) {
             $table->id();
+            $table->date('start_date')->unique();
+            $table->date('end_date')->unique();
+            $table->integer('revision');
+            $table->boolean('is_next')->default(false);
             $table->timestamps();
         });
     }

@@ -15,6 +15,8 @@ class CreateMealtypesTable extends Migration
     {
         Schema::create('mealtypes', function (Blueprint $table) {
             $table->id();
+            $table->string('mealtype_name')->unique();
+            $table->bigInteger('fk_cooktime')->unsigned()->index();
             $table->timestamps();
         });
     }
