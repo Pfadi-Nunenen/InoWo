@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1d5a33a554522c4e6c9f017d1dff899b",
+    "content-hash": "7fc71354796bf9701aa8cbcb6de8d9c4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -461,21 +461,21 @@
         },
         {
             "name": "elibyy/tcpdf-laravel",
-            "version": "8.0.1",
+            "version": "8.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elibyy/tcpdf-laravel.git",
-                "reference": "7b6ea9cca8450c817aa3e0dbd9dd383baa26e4d1"
+                "reference": "50a5c6bfc38fc0c03deb16d4065267f471c787d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elibyy/tcpdf-laravel/zipball/7b6ea9cca8450c817aa3e0dbd9dd383baa26e4d1",
-                "reference": "7b6ea9cca8450c817aa3e0dbd9dd383baa26e4d1",
+                "url": "https://api.github.com/repos/elibyy/tcpdf-laravel/zipball/50a5c6bfc38fc0c03deb16d4065267f471c787d9",
+                "reference": "50a5c6bfc38fc0c03deb16d4065267f471c787d9",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": "^6.0|^7.0|^8.0",
-                "tecnickcom/tcpdf": "6.2.*|6.3.*|dev-main"
+                "tecnickcom/tcpdf": "6.2.*|6.3.*|6.4.*|dev-main"
             },
             "type": "library",
             "extra": {
@@ -511,9 +511,9 @@
             ],
             "support": {
                 "issues": "https://github.com/elibyy/tcpdf-laravel/issues",
-                "source": "https://github.com/elibyy/tcpdf-laravel/tree/8.0.1"
+                "source": "https://github.com/elibyy/tcpdf-laravel/tree/8.1.2"
             },
-            "time": "2021-03-11T12:36:37+00:00"
+            "time": "2021-03-27T14:23:50+00:00"
         },
         {
             "name": "fideloper/proxy",
