@@ -10,7 +10,7 @@
         "php": "^7.3 || ^8.0",
         "elibyy/tcpdf-laravel": "8.1.2",
         "fideloper/proxy": "4.4.1",
-        "fruitcake/laravel-cors": "2.0.4",
+        "fruitcake/laravel-cors": "2.0.5",
         "guzzlehttp/guzzle": "7.4.1",
         "laravel/framework": "8.79.0",
         "laravel/tinker": "2.7.0",
