@@ -4,8 +4,65 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f24bbd0a9191edcfbd6bca4270e258cc",
+    "content-hash": "cc668d8b6b40a5707189242116e0f1b5",
     "packages": [
+        {
+            "name": "airbrake/phpbrake",
+            "version": "v0.7.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/airbrake/phpbrake.git",
+                "reference": "fc22e92549606104b5f43accedfaba96cd060184"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/airbrake/phpbrake/zipball/fc22e92549606104b5f43accedfaba96cd060184",
+                "reference": "fc22e92549606104b5f43accedfaba96cd060184",
+                "shasum": ""
+            },
+            "require": {
+                "cash/lrucache": "^1.0",
+                "guzzlehttp/guzzle": ">=6.3",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "monolog/monolog": "^1.22|^2.0",
+                "phpunit/phpunit": "^5.7",
+                "squizlabs/php_codesniffer": "^2.9"
+            },
+            "suggest": {
+                "guzzlehttp/guzzle": "Guzzle HTTP client"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Airbrake\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Airbrake exception and error notifier for PHP",
+            "homepage": "https://airbrake.io",
+            "keywords": [
+                "airbrake",
+                "error",
+                "exception",
+                "logging",
+                "notifier"
+            ],
+            "support": {
+                "issues": "https://github.com/airbrake/phpbrake/issues",
+                "source": "https://github.com/airbrake/phpbrake/tree/v0.7.5"
+            },
+            "time": "2020-11-05T20:02:42+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.9.3",
@@ -65,6 +122,51 @@
                 }
             ],
             "time": "2021-08-15T20:50:18+00:00"
+        },
+        {
+            "name": "cash/lrucache",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cash/LRUCache.git",
+                "reference": "4fa4c6834cec59690b43526c4da41d6153026289"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cash/LRUCache/zipball/4fa4c6834cec59690b43526c4da41d6153026289",
+                "reference": "4fa4c6834cec59690b43526c4da41d6153026289",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "cash": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cash Costello",
+                    "email": "cash.costello@gmail.com"
+                }
+            ],
+            "description": "An efficient memory-based Least Recently Used (LRU) cache",
+            "homepage": "https://github.com/cash/LRUCache",
+            "keywords": [
+                "cache",
+                "lru"
+            ],
+            "support": {
+                "issues": "https://github.com/cash/LRUCache/issues",
+                "source": "https://github.com/cash/LRUCache/tree/1.0.0"
+            },
+            "time": "2013-09-20T18:59:12+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -5065,6 +5167,63 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.4"
             },
             "time": "2021-12-08T09:12:39+00:00"
+        },
+        {
+            "name": "vento/laravel-airbrake",
+            "version": "0.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Vento-Nuenenen/laravel-airbrake.git",
+                "reference": "bf835c9259213e7d8bc65890b2aa4378e6f9023e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Vento-Nuenenen/laravel-airbrake/zipball/bf835c9259213e7d8bc65890b2aa4378e6f9023e",
+                "reference": "bf835c9259213e7d8bc65890b2aa4378e6f9023e",
+                "shasum": ""
+            },
+            "require": {
+                "airbrake/phpbrake": "^0.7.3",
+                "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
+                "php": "^7.2|^7.3|^8.0|^8.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Vento\\LaravelAirbrake\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Vento\\LaravelAirbrake\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nuruzzaman Milon",
+                    "email": "contact@milon.im"
+                },
+                {
+                    "name": "Vento",
+                    "email": "github@brenneisen.me"
+                }
+            ],
+            "description": "Laravel service provider for Airbrake https://github.com/airbrake/phpbrake",
+            "keywords": [
+                "airbrake",
+                "laravel",
+                "logging"
+            ],
+            "support": {
+                "source": "https://github.com/Vento-Nuenenen/laravel-airbrake/tree/0.8.1"
+            },
+            "time": "2022-02-11T19:35:01+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
