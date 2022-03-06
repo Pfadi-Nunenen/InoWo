@@ -1,9 +1,9 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
             <span class="sr-only">{!! trans('titles.toggleNav') !!}</span>
         </button>
@@ -11,70 +11,26 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         @if(!Auth::guest())
             <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('overwatch/')}}" href="{{ url('/overwatch') }}">
-                            Übersicht
+                            Overwatch
                         </a>
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Konfiguration
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Administration
                         </a>
 
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item {{ Request::is('users/')}}" href="{{ url('/users') }}">
-                                Benutzer
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('groups/')}}" href="{{ url('/groups') }}">
-                                Gruppen
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('participations/')}}" href="{{ url('/participations') }}">
-                                Teilnehmer
-                            </a>
-                            <a class="dropdown-item {{ Request::is('passed/')}}" href="{{ url('/passed') }}">
-                                Bestanden
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('numbers/')}}" href="{{ url('/numbers') }}">
-                                Notfallnummern
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Punkte
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item {{ Request::is('points/')}}" href="{{ url('/points') }}">
-                                Punkte übersicht
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('transactions/')}}" href="{{ url('/transactions') }}">
-                                Punkte transaktionen
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Druckerei
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item {{ Request::is('id/')}}" href="{{ url('/id') }}">
-                                ID-Karten
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('gratulation/')}}" href="{{ url('/gratulation') }}">
-                                Gratulationen
-                            </a>
-                        </div>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item {{ Request::is('users/')}}" href="{{ url('/users') }}">
+                                    Benutzer
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider" /></li>
+                        </ul>
                     </li>
                 </ul>
         @endif
@@ -96,7 +52,7 @@
                     @endif
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ Auth::user()->scout_name }} <span class="caret"></span>
                         </a>
 
