@@ -2,22 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
-use DB;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
     public function index(Request $request)
     {
-        if($request->input('search') == null) {
-            $users = DB::table('users')->select('users.*')->get();
+        if ($request->input('search') == null) {
+            $users = User::all();
         } else {
             $search_string = $request->input('search');
-            $users = DB::table('users')->select('users.*')
-                ->where('scout_name', 'LIKE', "%$search_string%")
-                ->orWhere('scout_name', 'LIKE', "%$search_string%")
-                ->orWhere('scout_name', 'LIKE', "%$search_string%")->get();
+            $users = User::where('scout_name', 'LIKE', "%$search_string%")
+            ->orWhere('first_name', 'LIKE', "%$search_string%")
+            ->orWhere('last_name', 'LIKE', "%$search_string%");
         }
 
         return view('users.users', ['users' => $users]);
@@ -36,14 +35,20 @@ class UsersController extends Controller
         $email = $request->input('email');
 
         $password = $request->input('password');
-        $password_repeat = $request->input('password_repeat');
+        $password_confirmation = $request->input('password_confirmation');
 
-        if ($password != null && $password === $password_repeat) {
+        if ($password_confirmation != null && $password === $password_confirmation) {
             $password = Hash::make($password);
 
             $password_repeat = null;
 
-            DB::table('users')->insert(['scout_name' => $scout_name, 'first_name' => $first_name, 'last_name' => $last_name, 'email' => $email, 'password' => $password]);
+            User::create([
+                'scout_name' => $scout_name,
+                'first_name' => $first_name,
+                'last_name' => $last_name,
+                'email' => $email,
+                'password' => $password
+            ]);
 
             return redirect()->back()->with('message', 'Benutzer wurde erstellt.');
         } else {
@@ -53,9 +58,9 @@ class UsersController extends Controller
 
     public function edit($uid)
     {
-        $users = DB::table('users')->where('id', '=', $uid)->first();
+        $user = User::where('id', '=', $uid);
 
-        return view('users.edit', ['users' => $users]);
+        return view('users.edit', ['user' => $user]);
     }
 
     public function update(Request $request, $uid)
@@ -73,11 +78,22 @@ class UsersController extends Controller
 
             $password_repeat = null;
 
-            DB::table('users')->where('id', '=', $uid)->update(['scout_name' => $scout_name, 'first_name' => $first_name, 'last_name' => $last_name, 'email' => $email, 'password' => $password]);
+            User::where('id', '=', $uid)->update([
+                'scout_name' => $scout_name,
+                'first_name' => $first_name,
+                'last_name' => $last_name,
+                'email' => $email,
+                'password' => $password
+            ]);
 
             return redirect()->back()->with('message', 'Benutzer wurde aktualisiert.');
         } elseif ($password == null) {
-            DB::table('users')->where('id', '=', $uid)->update(['scout_name' => $scout_name, 'first_name' => $first_name, 'last_name' => $last_name, 'email' => $email]);
+            User::where('id', '=', $uid)->update([
+                'scout_name' => $scout_name,
+                'first_name' => $first_name,
+                'last_name' => $last_name,
+                'email' => $email
+            ]);
 
             return redirect()->back()->with('message', 'Benutzer wurde aktualisiert. Das Passwort wurde beibehalten!');
         } else {
@@ -87,7 +103,7 @@ class UsersController extends Controller
 
     public function destroy($uid)
     {
-        DB::table('users')->where('id', '=', $uid)->delete();
+        User::destroy($uid);
 
         return redirect()->back()->with('message', 'Benutzer erfolgreich gelöscht.');
     }
