@@ -8,12 +8,10 @@
     ],
     "require": {
         "php": "^8.0.2",
-        "elibyy/tcpdf-laravel": "^9.0",
         "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^9.2",
+        "laravel/framework": "^9.11",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4",
-        "laravelcollective/html": "^6.3",
         "spatie/laravel-permission": "^5.5",
         "vento/laravel-airbrake": "^0.8.1"
     },
