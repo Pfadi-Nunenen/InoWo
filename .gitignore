@@ -6,7 +6,6 @@
 .env
 .env.backup
 .phpunit.result.cache
-docker-compose.override.yml
 Homestead.json
 Homestead.yaml
 npm-debug.log
@@ -14,8 +13,9 @@ yarn-error.log
 /.idea
 /.vscode
 
-# Created by https://www.toptal.com/developers/gitignore/api/macos,dotenv,laravel,phpstorm+all,windows,linux,yarn,node
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,dotenv,laravel,phpstorm+all,windows,linux,yarn,node
+
+# Created by https://www.toptal.com/developers/gitignore/api/yarn,node,macos,linux,dotenv,laravel,windows,phpstorm+all
+# Edit at https://www.toptal.com/developers/gitignore?templates=yarn,node,macos,linux,dotenv,laravel,windows,phpstorm+all
 
 ### dotenv ###
 .env
@@ -87,6 +87,10 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+### macOS Patch ###
+# iCloud generated files
+*.icloud
 
 ### Node ###
 # Logs
@@ -357,4 +361,4 @@ $RECYCLE.BIN/
 # and uncomment the following lines
 # .pnp.*
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,dotenv,laravel,phpstorm+all,windows,linux,yarn,node
+# End of https://www.toptal.com/developers/gitignore/api/yarn,node,macos,linux,dotenv,laravel,windows,phpstorm+all
