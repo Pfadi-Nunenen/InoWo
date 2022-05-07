@@ -19,7 +19,7 @@ Route::redirect('/', '/overwatch', 301);
 
 Auth::routes();
 
-Route::group(['middleware' => ['auth']], function (){
+Route::group(['middleware' => ['auth']], function(){
     Route::any('/overwatch', [OverwatchController::class, 'index'])->name('overwatch');
 
     Route::any('/users', [UsersController::class, 'index'])->name('users');

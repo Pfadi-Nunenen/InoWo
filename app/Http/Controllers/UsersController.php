@@ -4,30 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
-    public function index(Request $request)
+    function index(Request $request)
     {
-        if ($request->input('search') == null) {
+        if($request->input('search') == null) {
             $users = User::all();
         } else {
             $search_string = $request->input('search');
             $users = User::where('scout_name', 'LIKE', "%$search_string%")
-            ->orWhere('first_name', 'LIKE', "%$search_string%")
-            ->orWhere('last_name', 'LIKE', "%$search_string%");
+                ->orWhere('first_name', 'LIKE', "%$search_string%")
+                ->orWhere('last_name', 'LIKE', "%$search_string%");
         }
 
-        return view('users.users', ['users' => $users]);
+        return view('users.index', ['users' => $users]);
     }
 
-    public function create()
+    function create()
     {
         return view('users.add');
     }
 
-    public function store(Request $request)
+    function store(Request $request)
     {
         $scout_name = $request->input('scout_name');
         $first_name = $request->input('first_name');
@@ -56,14 +55,14 @@ class UsersController extends Controller
         }
     }
 
-    public function edit($uid)
+    function edit($uid)
     {
         $user = User::where('id', '=', $uid);
 
         return view('users.edit', ['user' => $user]);
     }
 
-    public function update(Request $request, $uid)
+    function update(Request $request, $uid)
     {
         $scout_name = $request->input('scout_name');
         $first_name = $request->input('first_name');
@@ -87,7 +86,7 @@ class UsersController extends Controller
             ]);
 
             return redirect()->back()->with('message', 'Benutzer wurde aktualisiert.');
-        } elseif ($password == null) {
+        } elseif($password == null) {
             User::where('id', '=', $uid)->update([
                 'scout_name' => $scout_name,
                 'first_name' => $first_name,
@@ -101,7 +100,7 @@ class UsersController extends Controller
         }
     }
 
-    public function destroy($uid)
+    function destroy($uid)
     {
         User::destroy($uid);
 

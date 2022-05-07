@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
 
@@ -21,8 +19,8 @@ class RolesTableSeeder extends Seeder
         // Reset cached roles and permissions
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
-        // Seed "Super Admin" role
-        $seededRoleName = "Super-Admin";
+        // Seed "Administrator" role
+        $seededRoleName = "Administator";
         $role = Role::where('name', '=', $seededRoleName)->first();
         if ($role === null){
             $role = Role::create([
@@ -31,8 +29,8 @@ class RolesTableSeeder extends Seeder
             $role->save();
         }
 
-        // Seed "Staff" role
-        $seededRoleName = "staff";
+        // Seed "Buchhaltung" role
+        $seededRoleName = "Buchhaltung";
         $role = Role::where('name', '=', $seededRoleName)->first();
         if ($role === null){
             $role = Role::create([
@@ -42,7 +40,7 @@ class RolesTableSeeder extends Seeder
         }
 
         // Seed "User" role
-        $seededRoleName = "user";
+        $seededRoleName = "User";
         $role = Role::where('name', '=', $seededRoleName)->first();
         if ($role === null){
             $role = Role::create([
