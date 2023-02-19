@@ -19,7 +19,7 @@ class UsersController extends Controller
                 ->orWhere('last_name', 'LIKE', "%$search_string%");
         }
 
-        return view('users.index', ['users' => $users]);
+        return view('users.users', ['users' => $users]);
     }
 
     public function create()
