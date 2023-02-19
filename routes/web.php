@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\OverwatchController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,4 +29,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/users/edit/{uid}', [UsersController::class, 'edit'])->name('edit-users');
     Route::post('/users/update/{uid}', [UsersController::class, 'update'])->name('update-users');
     Route::get('/users/destroy/{uid}', [UsersController::class, 'destroy'])->name('destroy-users');
+
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/profile/update', [ProfileController::class, 'update'])->name('update-profile');
 });
