@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
-    function index(Request $request)
+    public function index(Request $request)
     {
         if($request->input('search') == null) {
             $users = User::all();
@@ -21,12 +22,12 @@ class UsersController extends Controller
         return view('users.index', ['users' => $users]);
     }
 
-    function create()
+    public function create()
     {
         return view('users.add');
     }
 
-    function store(Request $request)
+    public function store(Request $request)
     {
         $scout_name = $request->input('scout_name');
         $first_name = $request->input('first_name');
@@ -46,7 +47,7 @@ class UsersController extends Controller
                 'first_name' => $first_name,
                 'last_name' => $last_name,
                 'email' => $email,
-                'password' => $password
+                'password' => $password,
             ]);
 
             return redirect()->back()->with('message', 'Benutzer wurde erstellt.');
@@ -55,14 +56,14 @@ class UsersController extends Controller
         }
     }
 
-    function edit($uid)
+    public function edit($uid)
     {
         $user = User::where('id', '=', $uid);
 
         return view('users.edit', ['user' => $user]);
     }
 
-    function update(Request $request, $uid)
+    public function update($uid, Request $request)
     {
         $scout_name = $request->input('scout_name');
         $first_name = $request->input('first_name');
@@ -82,7 +83,7 @@ class UsersController extends Controller
                 'first_name' => $first_name,
                 'last_name' => $last_name,
                 'email' => $email,
-                'password' => $password
+                'password' => $password,
             ]);
 
             return redirect()->back()->with('message', 'Benutzer wurde aktualisiert.');
@@ -91,7 +92,7 @@ class UsersController extends Controller
                 'scout_name' => $scout_name,
                 'first_name' => $first_name,
                 'last_name' => $last_name,
-                'email' => $email
+                'email' => $email,
             ]);
 
             return redirect()->back()->with('message', 'Benutzer wurde aktualisiert. Das Passwort wurde beibehalten!');
@@ -100,7 +101,7 @@ class UsersController extends Controller
         }
     }
 
-    function destroy($uid)
+    public function destroy($uid)
     {
         User::destroy($uid);
 
