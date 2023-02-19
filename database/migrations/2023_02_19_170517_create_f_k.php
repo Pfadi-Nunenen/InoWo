@@ -12,10 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreign('fk_sleep_temp')->references('id')->on('sleeptemp')->onDelete('cascade');
-        });
-
-        Schema::table('users', function (Blueprint $table) {
             $table->foreign('fk_job')->references('id')->on('jobs')->onDelete('cascade');
         });
 
