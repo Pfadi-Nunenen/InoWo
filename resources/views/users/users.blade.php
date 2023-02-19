@@ -11,7 +11,7 @@
         <div class="col-md-10 offset-md-1">
             <div class="card">
                 <div class="card-header">
-                    <form method="POST" action="." accept-charset="UTF-8" role="form" class="needs-validation">
+                    <form method="POST" action="{{ route('users') }}" accept-charset="UTF-8" role="form" class="needs-validation">
                         @csrf
 
                         <div class="input-group" id="adv-search">
@@ -33,9 +33,9 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h5 class="float-left">Benutzer</h5>
+                    <h5 class="float-start">Benutzer</h5>
 
-                    <a href="{{  route('overwatch') }}" class="float-right">Zurück zu Overwatch</a>
+                    <a href="{{  route('overwatch') }}" class="float-end">Zurück zu Overwatch</a>
                 </div>
                 <div class="card-body table-responsive">
                     <table class="table table-hover">
