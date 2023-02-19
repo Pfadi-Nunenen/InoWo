@@ -8,11 +8,8 @@ class UserObserver
 {
     /**
      * Handle the User "created" event.
-     *
-     * @param  \App\Models\User  $user
-     * @return void
      */
-    function created(User $user)
+    public function created(User $user): void
     {
         $user->assignRole('user');
     }
