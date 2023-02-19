@@ -10,7 +10,7 @@ class UsersController extends Controller
 {
     public function index(Request $request)
     {
-        if($request->input('search') == null) {
+        if ($request->input('search') == null) {
             $users = User::all();
         } else {
             $search_string = $request->input('search');
@@ -87,7 +87,7 @@ class UsersController extends Controller
             ]);
 
             return redirect()->back()->with('message', 'Benutzer wurde aktualisiert.');
-        } elseif($password == null) {
+        } elseif ($password == null) {
             User::where('id', '=', $uid)->update([
                 'scout_name' => $scout_name,
                 'first_name' => $first_name,
