@@ -31,18 +31,27 @@
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <tr>
+                            <th>Mahlzeit</th>
                             <th>Z'Morge</th>
                             <th>Z'Mittag</th>
                             <th>Z'Nacht</th>
                             <th>Mitnäh</th>
                         </tr>
-                        <tr>
-                            <th>Mahlzeit</th>
-                            @foreach($period as $date)
-                                <th>{{ $date->format('d.m.Y') }} ({{ $date->locale('de')->dayName }})</th>
-                            @endforeach
-                        </tr>
+                        {{ $meals }}
+
+                        @foreach($period as $date)
+                            <tr>
+                                <td>{{ $date->format('d.m.Y') }} ({{ $date->locale('de')->dayName }})</td>
+                                <td>{{ true }}</td>
+                                <td>{{ true }}</td>
+                                <td>{{ true }}</td>
+                                <td>{{ true }}</td>
+                            </tr>
+                        @endforeach
                     </table>
+                </div>
+                <div class="input-group" id="adv-search">
+                    <button onclick="location.href='{{ route('add-profile-presence') }}'" type="button" class="btn btn-primary form-control mt-2">Anwesenheit Erfassen</button>
                 </div>
             </div>
         </div>
