@@ -31,19 +31,16 @@
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <tr>
+                            <th>Z'Morge</th>
+                            <th>Z'Mittag</th>
+                            <th>Z'Nacht</th>
+                            <th>Mitnäh</th>
+                        </tr>
+                        <tr>
                             <th>Mahlzeit</th>
                             @foreach($period as $date)
                                 <th>{{ $date->format('d.m.Y') }} ({{ $date->locale('de')->dayName }})</th>
                             @endforeach
-                        </tr>
-                        <tr>
-                            <th>Z'Morge</th>
-                        </tr>
-                        <tr>
-                            <th>Z'Mittag</th>
-                        </tr>
-                        <tr>
-                            <th>Z'Nacht</th>
                         </tr>
                     </table>
                 </div>
