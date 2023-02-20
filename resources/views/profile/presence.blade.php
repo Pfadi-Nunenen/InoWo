@@ -8,11 +8,12 @@
             </div>
         @endif
 
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="float-start">Anwesenheit & Essen</h5>
-                </div>
-                <div class="card-body">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="float-start">Anwesenheit & Essen</h5>
+            </div>
+            <div class="card-body">
+                <form>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <tr>
@@ -22,15 +23,14 @@
                                 <th>Z'Nacht</th>
                                 <th>Mitnäh</th>
                             </tr>
-                            {{ $meals }}
 
                             @foreach($period as $date)
                                 <tr>
                                     <td>{{ $date->format('d.m.Y') }} ({{ $date->locale('de')->dayName }})</td>
-                                    <td>{{ true }}</td>
-                                    <td>{{ true }}</td>
-                                    <td>{{ true }}</td>
-                                    <td>{{ true }}</td>
+                                    <td><input type="checkbox" /></td>
+                                    <td><input type="checkbox" /></td>
+                                    <td><input type="checkbox" /></td>
+                                    <td><input type="checkbox" /></td>
                                 </tr>
                             @endforeach
                         </table>
@@ -38,7 +38,8 @@
                     <div class="input-group" id="adv-search">
                         <button onclick="location.href='{{ route('add-profile-presence') }}'" type="button" class="btn btn-primary form-control mt-2">Anwesenheit Erfassen</button>
                     </div>
-                </div>
+                </form>
             </div>
+        </div>
     </div>
 @endsection
