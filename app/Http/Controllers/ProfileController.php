@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Meal;
+use App\Models\MealType;
 use App\Models\Settings;
 use App\Models\User;
 use Carbon\CarbonPeriod;
@@ -42,7 +43,11 @@ class ProfileController extends Controller
 
     public function presenceSave(Request $request)
     {
-        $uid = Auth::id();
+        $user = User::find(Auth::id());
+        $morningMeal = MealType::where('name', 'LIKE', "Z'Morge'")->first();
+        $middayMeal = MealType::where('name', 'LIKE', "Z'Mittag")->first();
+        $eveningMeal = MealType::where('name', 'LIKE', "Z'Nacht")->first();
+        $takeawayMeal = MealType::where('name', 'LIKE', "Mitnäh")->first();
 
         $zmorge = $request->input('zmorge');
         $zmittag = $request->input('zmittag');
@@ -52,8 +57,33 @@ class ProfileController extends Controller
         foreach($zmorge as $key => $value) {
             print_r($key);
             $meal = new Meal();
-            $meal->user($uid);
+            $meal->user($user);
+            $meal->mealTypes($morningMeal);
+            $meal->save();
+        }
+
+        foreach($zmittag as $key => $value) {
+            print_r($key);
+            $meal = new Meal();
+            $meal->user($user);
             $meal->mealTypes();
+            $meal->save();
+        }
+
+        foreach($znacht as $key => $value) {
+            print_r($key);
+            $meal = new Meal();
+            $meal->user($user);
+            $meal->mealTypes();
+            $meal->save();
+        }
+
+        foreach($mitnae as $key => $value) {
+            print_r($key);
+            $meal = new Meal();
+            $meal->user($user);
+            $meal->mealTypes();
+            $meal->save();
         }
     }
 }
