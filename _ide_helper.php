@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 10.0.3.
+ * Generated for Laravel 10.1.1.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3661,6 +3661,19 @@
                         return $instance->driver($driver);
         }
                     /**
+         * Resolve the given store.
+         *
+         * @param string $name
+         * @return \Illuminate\Contracts\Cache\Repository 
+         * @throws \InvalidArgumentException
+         * @static 
+         */ 
+        public static function resolve($name)
+        {
+                        /** @var \Illuminate\Cache\CacheManager $instance */
+                        return $instance->resolve($name);
+        }
+                    /**
          * Create a new cache repository with the given implementation.
          *
          * @param \Illuminate\Contracts\Cache\Store $store
@@ -4099,6 +4112,18 @@
         {
                         /** @var \Illuminate\Cache\Repository $instance */
                         return $instance->getStore();
+        }
+                    /**
+         * Set the cache store implementation.
+         *
+         * @param \Illuminate\Contracts\Cache\Store $store
+         * @return static 
+         * @static 
+         */ 
+        public static function setStore($store)
+        {
+                        /** @var \Illuminate\Cache\Repository $instance */
+                        return $instance->setStore($store);
         }
                     /**
          * Get the event dispatcher instance.
@@ -7688,7 +7713,7 @@
      * @method static \Illuminate\Http\Client\PendingRequest withBasicAuth(string $username, string $password)
      * @method static \Illuminate\Http\Client\PendingRequest withDigestAuth(string $username, string $password)
      * @method static \Illuminate\Http\Client\PendingRequest withToken(string $token, string $type = 'Bearer')
-     * @method static \Illuminate\Http\Client\PendingRequest withUserAgent(string $userAgent)
+     * @method static \Illuminate\Http\Client\PendingRequest withUserAgent(string|bool $userAgent)
      * @method static \Illuminate\Http\Client\PendingRequest withUrlParameters(array $parameters = [])
      * @method static \Illuminate\Http\Client\PendingRequest withCookies(array $cookies, string $domain)
      * @method static \Illuminate\Http\Client\PendingRequest maxRedirects(int $max)
