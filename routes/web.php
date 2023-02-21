@@ -33,4 +33,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::get('/profile/update', [ProfileController::class, 'update'])->name('update-profile');
     Route::get('/profile/presence', [ProfileController::class, 'presence'])->name('add-profile-presence');
+    Route::post('/profile/presence/save', [ProfileController::class, 'presenceSave'])->name('save-profile-presence');
 });
