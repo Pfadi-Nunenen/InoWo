@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('meals', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('fk_user')->unsigned()->index();
-            $table->bigInteger('fk_mealtypes')->unsigned()->index();
+            $table->bigInteger('fk_users')->unsigned()->index();
+            $table->bigInteger('fk_meal_types')->unsigned()->index();
             $table->date('meal_date');
             $table->timestamps();
         });
