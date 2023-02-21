@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\MealTypes;
+use App\Models\MealType;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -21,7 +21,7 @@ class MealTypesTableSeeder extends Seeder
         ];
 
         foreach ($mealTypes as $type){
-            MealTypes::create([
+            MealType::create([
                 'mealtype_name' => $type,
             ]);
         }
