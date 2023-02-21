@@ -6,6 +6,7 @@ use App\Models\Meal;
 use App\Models\MealType;
 use App\Models\Settings;
 use App\Models\User;
+use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,7 +45,7 @@ class ProfileController extends Controller
     public function presenceSave(Request $request)
     {
         $user = User::find(Auth::id());
-        $morningMeal = MealType::where('name', 'LIKE', "Z'Morge'")->first();
+        $morningMeal = MealType::where('name', 'LIKE', "Z'Morge")->first();
         $middayMeal = MealType::where('name', 'LIKE', "Z'Mittag")->first();
         $eveningMeal = MealType::where('name', 'LIKE', "Z'Nacht")->first();
         $takeawayMeal = MealType::where('name', 'LIKE', "Mitnäh")->first();
@@ -55,35 +56,43 @@ class ProfileController extends Controller
         $mitnae = $request->input('mitnae');
 
         foreach($zmorge as $key => $value) {
-            print_r($key);
-            $meal = new Meal();
-            $meal->user($user);
-            $meal->mealTypes($morningMeal);
-            $meal->save();
+            $mealDate = Carbon::parse($key)->format('Y-m-d');
+
+            Meal::create([
+                'fk_users' => Auth::id(),
+                'fk_meal_types' => $morningMeal->id,
+                'meal_date' => $mealDate
+            ]);
         }
 
         foreach($zmittag as $key => $value) {
-            print_r($key);
-            $meal = new Meal();
-            $meal->user($user);
-            $meal->mealTypes();
-            $meal->save();
+            $mealDate = Carbon::parse($key)->format('Y-m-d');
+
+            Meal::create([
+                'fk_users' => Auth::id(),
+                'fk_meal_types' => $middayMeal->id,
+                'meal_date' => $mealDate
+            ]);
         }
 
         foreach($znacht as $key => $value) {
-            print_r($key);
-            $meal = new Meal();
-            $meal->user($user);
-            $meal->mealTypes();
-            $meal->save();
+            $mealDate = Carbon::parse($key)->format('Y-m-d');
+
+            Meal::create([
+                'fk_users' => Auth::id(),
+                'fk_meal_types' => $eveningMeal->id,
+                'meal_date' => $mealDate
+            ]);
         }
 
         foreach($mitnae as $key => $value) {
-            print_r($key);
-            $meal = new Meal();
-            $meal->user($user);
-            $meal->mealTypes();
-            $meal->save();
+            $mealDate = Carbon::parse($key)->format('Y-m-d');
+
+            Meal::create([
+                'fk_users' => Auth::id(),
+                'fk_meal_types' => $takeawayMeal->id,
+                'meal_date' => $mealDate
+            ]);
         }
     }
 }
