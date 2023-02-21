@@ -9,6 +9,12 @@ class Meal extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'fk_users',
+        'fk_meal_types',
+        'meal_date',
+    ];
+
     public function user()
     {
         return $this->hasOne(User::class);
