@@ -42,6 +42,9 @@
                         @foreach($period as $date)
                             <tr>
                                 <td>{{ $date->format('d.m.Y') }} ({{ $date->locale('de')->dayName }})</td>
+                                @if($date == $meals)
+
+                                @endif
                                 <td>{{ true }}</td>
                                 <td>{{ true }}</td>
                                 <td>{{ true }}</td>
