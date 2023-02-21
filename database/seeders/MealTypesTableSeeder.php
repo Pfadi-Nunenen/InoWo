@@ -22,7 +22,7 @@ class MealTypesTableSeeder extends Seeder
 
         foreach ($mealTypes as $type){
             MealType::create([
-                'mealtype_name' => $type,
+                'meal_types_name' => $type,
             ]);
         }
     }
