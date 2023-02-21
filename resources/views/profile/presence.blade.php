@@ -31,10 +31,18 @@
                             @foreach($period as $date)
                                 <tr>
                                     <td>{{ $date->format('d.m.Y') }} ({{ $date->locale('de')->dayName }})</td>
-                                    <td><input name="zmorge[{{$date->format('d.m.Y')}}]" type="checkbox" /></td>
-                                    <td><input name="zmittag[{{$date->format('d.m.Y')}}]" type="checkbox" /></td>
-                                    <td><input name="znacht[{{$date->format('d.m.Y')}}]" type="checkbox" /></td>
-                                    <td><input name="mitnae[{{$date->format('d.m.Y')}}]" type="checkbox" /></td>
+                                    <td>
+                                        <input class="form-check-input" name="zmorge[{{$date->format('d.m.Y')}}]" type="checkbox" />
+                                    </td>
+                                    <td>
+                                        <input class="form-check-input" name="zmittag[{{$date->format('d.m.Y')}}]" type="checkbox" />
+                                    </td>
+                                    <td>
+                                        <input class="form-check-input" name="znacht[{{$date->format('d.m.Y')}}]" type="checkbox" />
+                                    </td>
+                                    <td>
+                                        <input class="form-check-input" name="mitnae[{{$date->format('d.m.Y')}}]" type="checkbox" />
+                                    </td>
                                 </tr>
                             @endforeach
                         </table>
