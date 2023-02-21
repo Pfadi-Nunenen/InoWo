@@ -6,6 +6,7 @@ use App\Models\Meals;
 use App\Models\Settings;
 use App\Models\User;
 use Carbon\CarbonPeriod;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -37,5 +38,11 @@ class ProfileController extends Controller
         $period = CarbonPeriod::create($settings->start_date, $settings->end_date);
 
         return view('profile.presence', ['user' => $user, 'period' => $period]);
+    }
+
+    public function presenceSave(Request $request)
+    {
+        $zmorge = $request->input('zmorge');
+        $zmittag = $request->input('zmittag');
     }
 }
