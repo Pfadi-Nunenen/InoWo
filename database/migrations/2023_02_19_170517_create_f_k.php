@@ -20,11 +20,11 @@ return new class extends Migration
         });
 
         Schema::table('meals', function (Blueprint $table) {
-            $table->foreign('fk_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('fk_users')->references('id')->on('users')->onDelete('cascade');
         });
 
         Schema::table('meals', function (Blueprint $table) {
-            $table->foreign('fk_mealtypes')->references('id')->on('mealtypes')->onDelete('cascade');
+            $table->foreign('fk_meal_types')->references('id')->on('meal_types')->onDelete('cascade');
         });
     }
 };
