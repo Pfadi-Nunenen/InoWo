@@ -27,15 +27,16 @@
                             @foreach($period as $date)
                                 <tr>
                                     <td>{{ $date->format('d.m.Y') }} ({{ $date->locale('de')->dayName }})</td>
-                                    <td><input type="checkbox" /></td>
-                                    <td><input type="checkbox" /></td>
-                                    <td><input type="checkbox" /></td>
-                                    <td><input type="checkbox" /></td>
+                                    <td><input id="date=$date->format('d.m.Y')&meal=zmorge" name="" type="checkbox" /></td>
+                                    <td><input id="date=$date->format('d.m.Y')&meal=zmittag" type="checkbox" /></td>
+                                    <td><input id="date=$date->format('d.m.Y')&meal=znacht" type="checkbox" /></td>
+                                    <td><input id="date=$date->format('d.m.Y')&meal=mitnae" type="checkbox" /></td>
                                 </tr>
                             @endforeach
                         </table>
                     </div>
                     <div class="input-group" id="adv-search">
+                        <input />
                         <button onclick="location.href='{{ route('add-profile-presence') }}'" type="button" class="btn btn-primary form-control mt-2">Anwesenheit Erfassen</button>
                     </div>
                 </form>
