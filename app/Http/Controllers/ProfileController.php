@@ -39,7 +39,9 @@ class ProfileController extends Controller
         $settings = Settings::first();
         $period = CarbonPeriod::create($settings->start_date, $settings->end_date);
 
-        return view('profile.presence', ['user' => $user, 'period' => $period]);
+        $meals = Meal::where('fk_users', '=', $uid)->get();
+
+        return view('profile.presence', ['user' => $user, 'period' => $period, 'meals' => $meals]);
     }
 
     public function presenceSave(Request $request)
@@ -56,44 +58,52 @@ class ProfileController extends Controller
         $znacht = $request->input('znacht');
         $mitnae = $request->input('mitnae');
 
-        foreach($zmorge as $key => $value) {
-            $mealDate = Carbon::parse($key)->format('Y-m-d');
+        if($zmorge) {
+            foreach($zmorge as $key => $value) {
+                $mealDate = Carbon::parse($key)->format('Y-m-d');
 
-            Meal::create([
-                'fk_users' => Auth::id(),
-                'fk_meal_types' => $morningMeal->id,
-                'meal_date' => $mealDate
-            ]);
+                Meal::create([
+                    'fk_users' => Auth::id(),
+                    'fk_meal_types' => $morningMeal->id,
+                    'meal_date' => $mealDate
+                ]);
+            }
         }
 
-        foreach($zmittag as $key => $value) {
-            $mealDate = Carbon::parse($key)->format('Y-m-d');
+        if($zmittag) {
+            foreach($zmittag as $key => $value) {
+                $mealDate = Carbon::parse($key)->format('Y-m-d');
 
-            Meal::create([
-                'fk_users' => Auth::id(),
-                'fk_meal_types' => $middayMeal->id,
-                'meal_date' => $mealDate
-            ]);
+                Meal::create([
+                    'fk_users' => Auth::id(),
+                    'fk_meal_types' => $middayMeal->id,
+                    'meal_date' => $mealDate
+                ]);
+            }
         }
 
-        foreach($znacht as $key => $value) {
-            $mealDate = Carbon::parse($key)->format('Y-m-d');
+        if($znacht) {
+            foreach($znacht as $key => $value) {
+                $mealDate = Carbon::parse($key)->format('Y-m-d');
 
-            Meal::create([
-                'fk_users' => Auth::id(),
-                'fk_meal_types' => $eveningMeal->id,
-                'meal_date' => $mealDate
-            ]);
+                Meal::create([
+                    'fk_users' => Auth::id(),
+                    'fk_meal_types' => $eveningMeal->id,
+                    'meal_date' => $mealDate
+                ]);
+            }
         }
 
-        foreach($mitnae as $key => $value) {
-            $mealDate = Carbon::parse($key)->format('Y-m-d');
+        if($mitnae) {
+            foreach($mitnae as $key => $value) {
+                $mealDate = Carbon::parse($key)->format('Y-m-d');
 
-            Meal::create([
-                'fk_users' => Auth::id(),
-                'fk_meal_types' => $takeawayMeal->id,
-                'meal_date' => $mealDate
-            ]);
+                Meal::create([
+                    'fk_users' => Auth::id(),
+                    'fk_meal_types' => $takeawayMeal->id,
+                    'meal_date' => $mealDate
+                ]);
+            }
         }
 
         return redirect()->back()->with('message', 'Gespeichert');
