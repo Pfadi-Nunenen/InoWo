@@ -25,7 +25,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h5 class="float-start">Anwesenheit & Essen</h5>
+                <h5>Anwesenheit & Essen</h5>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -37,18 +37,54 @@
                             <th>Z'Nacht</th>
                             <th>Mitnäh</th>
                         </tr>
-                        {{ $meals }}
-
                         @foreach($period as $date)
                             <tr>
-                                <td>{{ $date->format('d.m.Y') }} ({{ $date->locale('de')->dayName }})</td>
-                                @if($date == $meals)
+                                <td>
+                                    {{ $date->format('d.m.Y') }} ({{ $date->locale('de')->dayName }})
+                                </td>
+                                @foreach($meals as $meal)
+                                    @if(\Carbon\Carbon::parse($meal->meal_date) == \Carbon\Carbon::parse($date))
+                                        @if($meal->fk_meal_types == 1)
+                                            <td>
+                                                <i class="fa fa-check" aria-hidden="true"></i>
+                                            </td>
+                                        @else
+                                            <td>
+                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                            </td>
+                                        @endif
 
-                                @endif
-                                <td>{{ true }}</td>
-                                <td>{{ true }}</td>
-                                <td>{{ true }}</td>
-                                <td>{{ true }}</td>
+                                        @if($meal->fk_meal_types == 2)
+                                            <td>
+                                                <i class="fa fa-check" aria-hidden="true"></i>
+                                            </td>
+                                        @else
+                                            <td>
+                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                            </td>
+                                        @endif
+
+                                        @if($meal->fk_meal_types == 3)
+                                            <td>
+                                                <i class="fa fa-check" aria-hidden="true"></i>
+                                            </td>
+                                        @else
+                                            <td>
+                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                            </td>
+                                        @endif
+
+                                        @if($meal->fk_meal_types == 4)
+                                            <td>
+                                                <i class="fa fa-check" aria-hidden="true"></i>
+                                            </td>
+                                        @else
+                                            <td>
+                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                            </td>
+                                        @endif
+                                    @endif
+                                @endforeach
                             </tr>
                         @endforeach
                     </table>
@@ -63,7 +99,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h5 class="float-start">Belege & Einkäufe</h5>
+                <h5>Belege & Einkäufe</h5>
             </div>
             <div class="card-body">
 
