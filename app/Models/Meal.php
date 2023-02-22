@@ -17,11 +17,11 @@ class Meal extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function mealTypes()
+    public function mealType()
     {
-        return $this->hasOne(MealType::class);
+        return $this->belongsTo(MealType::class);
     }
 }
