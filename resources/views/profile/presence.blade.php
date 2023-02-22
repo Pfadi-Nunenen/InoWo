@@ -12,7 +12,7 @@
             <div class="card-header">
                 <h5 class="float-start">Anwesenheit & Essen</h5>
 
-                <a href="{{  route('overwatch') }}" class="float-end">Zurück zum Profil</a>
+                <a href="{{  route('profile') }}" class="float-end">Zurück zum Profil</a>
             </div>
             <div class="card-body">
                 <form action="{{ route('save-profile-presence') }}" method="POST">
@@ -32,7 +32,11 @@
                                 <tr>
                                     <td>{{ $date->format('d.m.Y') }} ({{ $date->locale('de')->dayName }})</td>
                                     <td>
-                                        <input class="form-check-input" name="zmorge[{{$date->format('d.m.Y')}}]" type="checkbox" />
+                                        @if($fk_meal_types == 1)
+                                            <input class="form-check-input" name="zmorge[{{$date->format('d.m.Y')}}]" type="checkbox" />
+                                        @else
+
+                                        @endif
                                     </td>
                                     <td>
                                         <input class="form-check-input" name="zmittag[{{$date->format('d.m.Y')}}]" type="checkbox" />
