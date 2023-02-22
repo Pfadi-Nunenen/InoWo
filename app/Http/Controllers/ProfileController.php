@@ -21,7 +21,7 @@ class ProfileController extends Controller
         $settings = Settings::first();
         $period = CarbonPeriod::create($settings->start_date, $settings->end_date);
 
-        $meals = Meal::where('fk_user', '=', $uid)->get();
+        $meals = Meal::where('fk_users', '=', $uid)->get();
 
         return view('profile.profile', ['user' => $user, 'period' => $period, 'meals' => $meals]);
     }
@@ -44,7 +44,8 @@ class ProfileController extends Controller
 
     public function presenceSave(Request $request)
     {
-        $user = User::find(Auth::id());
+        Meal::where('fk_users', '=', Auth::id())->delete();
+
         $morningMeal = MealType::where('name', 'LIKE', "Z'Morge")->first();
         $middayMeal = MealType::where('name', 'LIKE', "Z'Mittag")->first();
         $eveningMeal = MealType::where('name', 'LIKE', "Z'Nacht")->first();
@@ -94,5 +95,7 @@ class ProfileController extends Controller
                 'meal_date' => $mealDate
             ]);
         }
+
+        return redirect()->back()->with('message', 'Gespeichert');
     }
 }
