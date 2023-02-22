@@ -30,23 +30,53 @@
 
                             @foreach($period as $date)
                                 <tr>
-                                    <td>{{ $date->format('d.m.Y') }} ({{ $date->locale('de')->dayName }})</td>
                                     <td>
-                                        @if($fk_meal_types == 1)
-                                            <input class="form-check-input" name="zmorge[{{$date->format('d.m.Y')}}]" type="checkbox" />
-                                        @else
+                                        {{ $date->format('d.m.Y') }} ({{ $date->locale('de')->dayName }})
+                                    </td>
+                                    @foreach($meals as $meal)
+                                        @if(\Carbon\Carbon::parse($meal->meal_date) == \Carbon\Carbon::parse($date))
+                                            @if($meal->fk_meal_types == 1)
+                                                <td>
+                                                    <input class="form-check-input" name="zmorge[{{$date->format('d.m.Y')}}]" type="checkbox" checked />
+                                                </td>
+                                            @else
+                                                <td>
+                                                    <input class="form-check-input" name="zmorge[{{$date->format('d.m.Y')}}]" type="checkbox" />
+                                                </td>
+                                            @endif
 
+                                            @if($meal->fk_meal_types == 2)
+                                                <td>
+                                                    <input class="form-check-input" name="zmittag[{{$date->format('d.m.Y')}}]" type="checkbox" checked />
+                                                </td>
+                                            @else
+                                                <td>
+                                                    <input class="form-check-input" name="zmittag[{{$date->format('d.m.Y')}}]" type="checkbox" />
+                                                </td>
+                                            @endif
+
+                                            @if($meal->fk_meal_types == 3)
+                                                <td>
+                                                    <input class="form-check-input" name="znacht[{{$date->format('d.m.Y')}}]" type="checkbox" checked />
+                                                </td>
+                                            @else
+                                                <td>
+                                                    <input class="form-check-input" name="znacht[{{$date->format('d.m.Y')}}]" type="checkbox" />
+                                                </td>
+                                            @endif
+
+                                            @if($meal->fk_meal_types == 4)
+                                                <td>
+                                                    <input class="form-check-input" name="mitnae[{{$date->format('d.m.Y')}}]" type="checkbox" checked />
+                                                </td>
+                                            @else
+                                                <td>
+                                                    <input class="form-check-input" name="mitnae[{{$date->format('d.m.Y')}}]" type="checkbox" />
+                                                </td>
+                                            @endif
                                         @endif
-                                    </td>
-                                    <td>
-                                        <input class="form-check-input" name="zmittag[{{$date->format('d.m.Y')}}]" type="checkbox" />
-                                    </td>
-                                    <td>
-                                        <input class="form-check-input" name="znacht[{{$date->format('d.m.Y')}}]" type="checkbox" />
-                                    </td>
-                                    <td>
-                                        <input class="form-check-input" name="mitnae[{{$date->format('d.m.Y')}}]" type="checkbox" />
-                                    </td>
+                                    @endforeach
+
                                 </tr>
                             @endforeach
                         </table>
