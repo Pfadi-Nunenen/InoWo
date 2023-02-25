@@ -9,6 +9,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -22,8 +23,31 @@ class ProfileController extends Controller
         $period = CarbonPeriod::create($settings->start_date, $settings->end_date);
 
         $meals = Meal::where('fk_users', '=', $uid)->get();
+        $mealTypes = MealType::all();
 
-        return view('profile.profile', ['user' => $user, 'period' => $period, 'meals' => $meals]);
+        $facturedMeals = [];
+        foreach ($period as $date) {
+            foreach ($mealTypes as $mealType) {
+                $facturedMeals[$date->format('d.m.Y')][$mealType['id']] = 0;
+            }
+        }
+
+        foreach ($meals as $meal) {
+            $mealDate = Carbon::parse($meal['meal_date'])->format('d.m.Y');
+
+            foreach ($facturedMeals as $key => $value) {
+                if ($key == $mealDate) {
+                    foreach ($value as $item) {
+                        print_r($item);
+                    }
+                }
+            }
+        }
+
+        //print_r($facturedMeals);
+        die();
+
+        return view('profile.profile', ['user' => $user, 'meals' => $facturedMeals]);
     }
 
     public function update()
