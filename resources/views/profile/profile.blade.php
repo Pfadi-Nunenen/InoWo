@@ -43,7 +43,6 @@
                                     {{ $date->format('d.m.Y') }} ({{ $date->locale('de')->dayName }})
                                 </td>
                                 @foreach($meals as $meal)
-                                    @if(\Carbon\Carbon::parse($meal->meal_date) == \Carbon\Carbon::parse($date))
                                         @if($meal->fk_meal_types == 1)
                                             <td>
                                                 <i class="fa fa-check" aria-hidden="true"></i>
@@ -84,7 +83,6 @@
                                             </td>
                                         @endif
                                     @endif
-                                @endforeach
                             </tr>
                         @endforeach
                     </table>
