@@ -59,8 +59,26 @@ class ProfileController extends Controller
         $period = CarbonPeriod::create($settings->start_date, $settings->end_date);
 
         $meals = Meal::where('fk_users', '=', $uid)->get();
+        $mealTypes = MealType::all();
 
-        return view('profile.presence', ['user' => $user, 'period' => $period, 'meals' => $meals]);
+        $facturedMeals = [];
+        foreach ($period as $date) {
+            foreach ($mealTypes as $mealType) {
+                $facturedMeals[$date->format('d.m.Y')][$mealType['id']] = 0;
+            }
+        }
+
+        foreach($meals as $meal) {
+            foreach($facturedMeals as $date => $mealTypes) {
+                $mealDate = Carbon::parse($meal['meal_date'])->format('d.m.Y');
+
+                if($date == $mealDate){
+                    $facturedMeals[$mealDate][$meal['fk_meal_types']] = 1;
+                }
+            }
+        }
+
+        return view('profile.presence', ['user' => $user, 'meals' => $facturedMeals]);
     }
 
     public function presenceSave(Request $request)
