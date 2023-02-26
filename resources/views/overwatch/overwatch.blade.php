@@ -8,6 +8,10 @@
             </div>
         @endif
 
+        <button class="btn btn-primary col-10 offset-1" onclick="location.href='{{ route('profile') }}'">Meine Anwesenheiten erfassen</button>
+
+        <div class="mb-3"></div>
+
         <div class="card col-md-10 offset-md-1">
             <div class="card-header">
                 <h5>Heute ({{ today() }})</h5>
