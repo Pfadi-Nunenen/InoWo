@@ -32,20 +32,15 @@ class ProfileController extends Controller
             }
         }
 
-        foreach ($meals as $meal) {
-            $mealDate = Carbon::parse($meal['meal_date'])->format('d.m.Y');
+        foreach($meals as $meal) {
+            foreach($facturedMeals as $date => $mealTypes) {
+                $mealDate = Carbon::parse($meal['meal_date'])->format('d.m.Y');
 
-            foreach ($facturedMeals as $key => $value) {
-                if ($key == $mealDate) {
-                    foreach ($value as $item) {
-                        print_r($item);
-                    }
+                if($date == $mealDate){
+                    $facturedMeals[$mealDate][$meal['fk_meal_types']] = 1;
                 }
             }
         }
-
-        //print_r($facturedMeals);
-        die();
 
         return view('profile.profile', ['user' => $user, 'meals' => $facturedMeals]);
     }
