@@ -37,52 +37,51 @@
                             <th>Z'Nacht</th>
                             <th>Mitnäh</th>
                         </tr>
-                        @foreach($period as $date)
+                        @foreach($meals as $day => $mealType)
                             <tr>
                                 <td>
-                                    {{ $date->format('d.m.Y') }} ({{ $date->locale('de')->dayName }})
+                                    {{ $day }}
                                 </td>
-                                @foreach($meals as $meal)
-                                        @if($meal->fk_meal_types == 1)
-                                            <td>
-                                                <i class="fa fa-check" aria-hidden="true"></i>
-                                            </td>
-                                        @else
-                                            <td>
-                                                <i class="fa fa-times" aria-hidden="true"></i>
-                                            </td>
-                                        @endif
 
-                                        @if($meal->fk_meal_types == 2)
-                                            <td>
-                                                <i class="fa fa-check" aria-hidden="true"></i>
-                                            </td>
-                                        @else
-                                            <td>
-                                                <i class="fa fa-times" aria-hidden="true"></i>
-                                            </td>
-                                        @endif
+                                @if($mealType[1] == 1)
+                                    <td>
+                                        <i class="fa fa-check fa-2x icon-green" aria-hidden="true"></i>
+                                    </td>
+                                @else
+                                    <td>
+                                        <i class="fa fa-times fa-2x icon-red" aria-hidden="true"></i>
+                                    </td>
+                                @endif
 
-                                        @if($meal->fk_meal_types == 3)
-                                            <td>
-                                                <i class="fa fa-check" aria-hidden="true"></i>
-                                            </td>
-                                        @else
-                                            <td>
-                                                <i class="fa fa-times" aria-hidden="true"></i>
-                                            </td>
-                                        @endif
+                                @if($mealType[2] == 1)
+                                    <td>
+                                        <i class="fa fa-check fa-2x icon-green" aria-hidden="true"></i>
+                                    </td>
+                                @else
+                                    <td>
+                                        <i class="fa fa-times fa-2x icon-red" aria-hidden="true"></i>
+                                    </td>
+                                @endif
 
-                                        @if($meal->fk_meal_types == 4)
-                                            <td>
-                                                <i class="fa fa-check" aria-hidden="true"></i>
-                                            </td>
-                                        @else
-                                            <td>
-                                                <i class="fa fa-times" aria-hidden="true"></i>
-                                            </td>
-                                        @endif
-                                    @endif
+                                @if($mealType[3] == 1)
+                                    <td>
+                                        <i class="fa fa-check fa-2x icon-green" aria-hidden="true"></i>
+                                    </td>
+                                @else
+                                    <td>
+                                        <i class="fa fa-times fa-2x icon-red" aria-hidden="true"></i>
+                                    </td>
+                                @endif
+
+                                @if($mealType[4] == 1)
+                                    <td>
+                                        <i class="fa fa-check fa-2x icon-green" aria-hidden="true"></i>
+                                    </td>
+                                @else
+                                    <td>
+                                        <i class="fa fa-times fa-2x icon-red" aria-hidden="true"></i>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                     </table>
