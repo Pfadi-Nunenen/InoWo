@@ -14,35 +14,40 @@
 
         <div class="card col-md-10 offset-md-1">
             <div class="card-header">
-                <h5>Heute ({{ today() }})</h5>
+                <h5>Anmeldungen pro Tag</h5>
             </div>
             <div class="card-body">
-                <h5>Z'Morge</h5>
-                <p>Anzahl Personen: {{ 5 }}</p>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Mahlzeit</th>
+                            <th>Z'Morge</th>
+                            <th>Z'Mittag</th>
+                            <th>Z'Nacht</th>
+                            <th>Mitnäh</th>
+                        </tr>
+                        @foreach($meals as $day => $mealType)
+                            <tr>
+                                <td>
+                                    {{ $day }}
+                                </td>
+                                <td>
+                                    {{ $mealType[1] }}
+                                </td>
+                                <td>
+                                    {{ $mealType[2] }}
+                                </td>
+                                <td>
+                                    {{ $mealType[3] }}
+                                </td>
+                                <td>
+                                    {{ $mealType[4] }}
+                                </td>
+                            </tr>
+                        @endforeach
 
-                <h5>Z'Mittag</h5>
-                <p>Anzahl Personen: {{ 5 }}</p>
-
-                <h5>Z'Nacht</h5>
-                <p>Anzahl Personen: {{ 5 }}</p>
-            </div>
-        </div>
-
-        <br />
-
-        <div class="card col-md-10 offset-md-1">
-            <div class="card-header">
-                <h5>Morgen ({{ today() }})</h5>
-            </div>
-            <div class="card-body">
-                <h5>Z'Morge</h5>
-                <p>Anzahl Personen: {{ 5 }}</p>
-
-                <h5>Z'Mittag</h5>
-                <p>Anzahl Personen: {{ 5 }}</p>
-
-                <h5>Z'Nacht</h5>
-                <p>Anzahl Personen: {{ 5 }}</p>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
