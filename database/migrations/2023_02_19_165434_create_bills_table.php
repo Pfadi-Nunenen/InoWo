@@ -17,8 +17,8 @@ return new class extends Migration
             $table->time('bill_time');
             $table->double('bill_value');
             $table->string('bill_img')->unique();
-            $table->bigInteger('fk_user')->unsigned()->index();
-            $table->bigInteger('fk_billtype')->unsigned()->index();
+            $table->foreignId('user_id')->unsigned()->index();
+            $table->foreignId('billtype_id')->unsigned()->index();
             $table->timestamps();
         });
     }
