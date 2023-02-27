@@ -12,19 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('bills', function (Blueprint $table) {
-            $table->foreign('fk_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
         Schema::table('bills', function (Blueprint $table) {
-            $table->foreign('fk_billtype')->references('id')->on('billtype')->onDelete('cascade');
+            $table->foreign('billtype_id')->references('id')->on('billtype')->onDelete('cascade');
         });
 
         Schema::table('meals', function (Blueprint $table) {
-            $table->foreign('fk_users')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
         Schema::table('meals', function (Blueprint $table) {
-            $table->foreign('fk_meal_types')->references('id')->on('meal_types')->onDelete('cascade');
+            $table->foreign('meal_types_id')->references('id')->on('meal_types')->onDelete('cascade');
         });
     }
 };
