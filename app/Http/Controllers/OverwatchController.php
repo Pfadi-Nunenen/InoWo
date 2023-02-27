@@ -15,7 +15,9 @@ class OverwatchController extends Controller
         $settings = Settings::first();
         $period = CarbonPeriod::create($settings->start_date, $settings->end_date);
 
-        $meals = Meal::all();
+        $meals = Meal::with('user')->get();
+        print_r($meals);
+
         $mealTypes = MealType::all();
 
         $facturedMeals = [];
