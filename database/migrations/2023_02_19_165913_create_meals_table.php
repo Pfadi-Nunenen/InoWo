@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('meals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('fk_users')->unsigned()->index();
-            $table->foreignId('fk_meal_types')->unsigned()->index();
+            $table->foreignId('user_id')->unsigned()->index();
+            $table->foreignId('meal_types_id')->unsigned()->index();
             $table->date('meal_date');
             $table->timestamps();
         });
