@@ -11,6 +11,6 @@
         "font-awesome": "^4.7.0",
         "laravel-vite-plugin": "^0.8.1",
         "sass": "^1.87.0",
-        "vite": "^4.5.13"
+        "vite": "^4.5.14"
     }
 }
