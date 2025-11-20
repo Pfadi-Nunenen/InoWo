@@ -10,7 +10,7 @@
         "bootstrap": "^5.3.8",
         "font-awesome": "^4.7.0",
         "laravel-vite-plugin": "^0.8.1",
-        "sass": "^1.94.1",
+        "sass": "^1.94.2",
         "vite": "^7.2.2"
     }
 }
